@@ -5,6 +5,13 @@ from accountapp.views import hello_world, AccountCreateView
 
 app_name = "accountapp"
 
+
+class AccountDetailView:
+    @classmethod
+    def as_view(cls):
+        pass
+
+
 urlpatterns = [
     path('hello_world/', hello_world, name='hello_world'),
 
@@ -12,4 +19,5 @@ urlpatterns = [
     path('logout/', LogoutView.as_view, name='logout'),
 
     path('create/', AccountCreateView.as_view(), name='create'),
+    path('detail/<int:pk>', AccountDetailView.as_view(), name='detail'),
 ]
