@@ -1,3 +1,5 @@
+from msilib.schema import ListView
+
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
@@ -10,6 +12,7 @@ from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 from accountapp.decorators import account_ownership_required
 from accountapp.forms import AccountUpdateForm
 from accountapp.models import HelloWorld
+from articleapp.models import Article
 
 
 # Create your views here.
@@ -73,3 +76,38 @@ class AccountDeleteView(DeleteView):
     success_url = reverse_lazy('accountapp:login')
     template_name = 'accountapp/delete.html'
 
+
+class ArticleListView(ListView):
+    model = Article
+    object_name: object
+    context_object_name = 'article_list'
+    template_name = 'articleapp/list.html'
+    paginate_by = 25
+
+
+class ArticleCreateView:
+    model = User
+    context_object_name = 'target_user'
+    success_url = reverse_lazy('accountapp:login')
+    template_name = 'accountapp/delete.html'
+
+
+class ArticleDetailView:
+    model = User
+    context_object_name = 'target_user'
+    success_url = reverse_lazy('accountapp:login')
+    template_name = 'accountapp/delete.html'
+
+
+class ArticleUpdateView:
+    model = User
+    context_object_name = 'target_user'
+    success_url = reverse_lazy('accountapp:login')
+    template_name = 'accountapp/delete.html'
+
+
+class ArticleDeleteView:
+    model = User
+    context_object_name = 'target_user'
+    success_url = reverse_lazy('accountapp:login')
+    template_name = 'accountapp/delete.html'
